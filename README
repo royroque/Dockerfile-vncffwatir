@@ -1,0 +1,6 @@
+This is a dockerfile with:
+ -base:  dockerfile/ubuntu-desktop (vncserver pre-installed)
+ -firefox
+ -ruby193
+ -watir v5.0 (plus all required dep that came with it)
+ -xvfb and headless (for headless operation in watir)
