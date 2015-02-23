@@ -17,4 +17,5 @@ docker run -d --volumes-from=$vol_mach_name \
             --name $stack_name -h $stack_name \
             -p 5901:5901 -e USER=root \
             $image_name 
-            
+
+echo "`docker inspect $stack_name |grep -i IPADDR`      $stack_name"
