@@ -17,5 +17,7 @@ RUN chmod 600 ~/.vnc/passwd
 
 EXPOSE 5901
 
+ADD /test /tmp/test
+
 CMD vncserver :1 -name vnc -geometry 1280x800 && tail -f ~/.vnc/*:1.log
 
