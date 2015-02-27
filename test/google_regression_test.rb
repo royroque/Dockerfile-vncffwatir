@@ -13,8 +13,10 @@ class GoogleSearchTest < Minitest::Test
   attr_accessor :browser, :headless
 
   def setup
-    @headless = Headless.new
-    headless.start if ENV['HEADLESS'] == "true" 
+    if ENV['HEADLESS'] == "true" && RbConfig::CONFIG['host_os'] =~ /linux/
+      @headless = Headless.new
+      headless.start
+    end 
     @browser = Watir::Browser.new(:ff)
   end
 
