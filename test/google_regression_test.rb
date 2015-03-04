@@ -27,8 +27,8 @@ class GoogleSearchTest < Minitest::Test
 
   def test_1
     browser.goto('http://google.com')
-    browser.text_field(:id => 'gbqfq').when_present.set 'watir'
-    browser.button(:id => 'gbqfb').when_present.click
+    browser.text_field(:name => 'q').when_present.set 'watir'
+    browser.button(:name => 'btnG').when_present.click
     assert browser.link(:text => /watir.com/i).when_present.exists?
   end
 

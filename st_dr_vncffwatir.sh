@@ -1,17 +1,12 @@
 #!/bin/bash
-if [ -z "$1" ]
-  then
-    echo "Usage: $0 <name_of_image>"
-    exit
-fi
-image_name=$1
+
+image_name=royroque/vncffwatir
 stack_name=vncffwatir
+vol_mach_name=datavol
 linked_mach_name1=ruby193rails3
 linked_mach_name2=j17p7adm
 linked_mach_name3=j17p7dep
-vol_mach_name=datavol
 
-docker rm -f $stack_name >/dev/null 2>&1
 docker run -d --volumes-from=$vol_mach_name \
             --link $linked_mach_name1:$linked_mach_name1  \
             --link $linked_mach_name2:$linked_mach_name2  \
