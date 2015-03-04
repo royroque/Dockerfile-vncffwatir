@@ -20,10 +20,10 @@ RUN chmod 600 ~/.vnc/passwd
 EXPOSE 5901
 
 VOLUME /media/shared
-WORKDIR /tmp
 
 ## Sample Test included ; can be executed once inside the container with:
 ## docker exec -it vncffwatir ruby /tmp/test/google_search.rb
+WORKDIR /tmp
 COPY /test /tmp/test
 
 CMD vncserver :1 -name vnc -geometry 1280x800 && tail -f ~/.vnc/*:1.log
