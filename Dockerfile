@@ -6,8 +6,6 @@ RUN sudo apt-get install -y supervisor
 RUN sudo apt-get install -y ruby1.9.3
 RUN sudo apt-get install -y xvfb
 RUN sudo gem install --no-rdoc --no-ri watir headless minitest minitest-reporters zip rake
-RUN sudo gem uninstall -I selenium-webdriver
-RUN sudo gem install --no-rdoc --no-ri selenium-webdriver --version '2.42.0'
 
 # INSTALL LATEST FIREFOX ESR: 
 ADD ff/firefox-*esr.tar.bz2 /opt
