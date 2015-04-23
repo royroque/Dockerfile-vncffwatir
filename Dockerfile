@@ -1,11 +1,31 @@
-FROM dockerfile/ubuntu-desktop
+FROM ubuntu:14.04
 MAINTAINER Roy ROQUE <roy.e.roque@gmail.com>
+
+# Install LXDE and VNC server.
+RUN \
+  apt-get update && \
+  DEBIAN_FRONTEND=noninteractive apt-get install -y lxde-core lxterminal tightvncserver && \
+  rm -rf /var/lib/apt/lists/*
 
 RUN sudo apt-get update
 RUN sudo apt-get install -y supervisor
-RUN sudo apt-get install -y ruby1.9.3
 RUN sudo apt-get install -y xvfb
-RUN sudo gem install --no-rdoc --no-ri watir headless minitest minitest-reporters zip rake
+RUN sudo apt-get -y install wget build-essential zlib1g-dev libssl-dev libreadline6-dev libyaml-dev
+
+# Install Ruby
+RUN \
+  apt-get -y update && \
+  cd /tmp && \
+  wget http://ftp.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p643.tar.gz && \
+  tar -xvzf ruby-2.0.0-p643.tar.gz && \
+  cd ruby-2.0.0-p643 && \
+  ./configure --prefix=/usr/local && \
+  make && \
+  make install && \
+  rm -rf /tmp/ruby-2.0.0-p643 
+
+# Install Gems
+RUN sudo gem install --no-rdoc --no-ri watir headless rspec zip
 RUN sudo gem uninstall -I watir-webdriver
 RUN sudo gem install --no-rdoc --no-ri watir-webdriver --version '0.6.11'
 RUN sudo gem uninstall -I selenium-webdriver
