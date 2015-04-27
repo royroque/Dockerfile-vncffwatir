@@ -25,7 +25,7 @@ RUN \
   rm -rf /tmp/ruby-2.0.0-p643 
 
 # Install Gems
-RUN sudo gem install --no-rdoc --no-ri watir headless rspec zip rest-client
+RUN sudo gem install --no-rdoc --no-ri watir headless rspec zip rest-client 
 RUN sudo gem uninstall -I watir-webdriver
 RUN sudo gem install --no-rdoc --no-ri watir-webdriver --version '0.6.11'
 RUN sudo gem uninstall -I selenium-webdriver
