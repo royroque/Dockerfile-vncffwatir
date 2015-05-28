@@ -46,4 +46,4 @@ WORKDIR /media/shared
 
 #CMD bash
 #CMD vncserver :1 -name vnc -geometry 1280x800 && tail -F ~/.vnc/*.log
-CMD vncserver :1 -name vnc -geometry 1344x864 && tail -F ~/.vnc/*.log
+CMD vncserver :1 -name vnc -geometry 1408x864 && tail -F ~/.vnc/*.log
