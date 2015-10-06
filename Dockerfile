@@ -13,7 +13,20 @@ EXPOSE 5901
 
 RUN \
   apt-get update && \
-  apt-get install -y supervisor xvfb wget build-essential zlib1g-dev libssl-dev libreadline6-dev libyaml-dev libmysqlclient-dev
+  apt-get install -y \
+    supervisor \ 
+    xvfb \ 
+    wget \
+    curl \
+    git \
+    build-essential \
+    zlib1g-dev \
+    libssl-dev \
+    libreadline6-dev \ 
+    libyaml-dev \
+    libmysqlclient-dev \ 
+    mailutils \
+    fetchmail
 
 ## Install Ruby
 RUN \
@@ -30,12 +43,13 @@ RUN \
 
 ## Install Gems
 RUN \
-  sudo gem install --no-rdoc --no-ri watir headless rspec zip rest-client && \
+  sudo gem install --no-rdoc --no-ri watir headless rspec zip rest-client mysql2 && \
   sudo gem uninstall -I watir-webdriver && \
-  sudo gem install --no-rdoc --no-ri watir-webdriver --version '0.6.11' && \
+  #sudo gem install --no-rdoc --no-ri watir-webdriver --version '0.6.11' && \
+  sudo gem install --no-rdoc --no-ri watir-webdriver --version '0.8.0' && \
   sudo gem uninstall -I selenium-webdriver && \
-  sudo gem install --no-rdoc --no-ri selenium-webdriver --version '2.44.0' && \
-  sudo gem install --no-rdoc --no-ri mysql2
+  #sudo gem install --no-rdoc --no-ri selenium-webdriver --version '2.44.0' && \
+  sudo gem install --no-rdoc --no-ri selenium-webdriver --version '2.46.2' 
 
 ## Install Latest Version of firefox ESR: (pre-downloaded in ./ff folder) 
 ADD ff/firefox-*esr.tar.bz2 /opt
